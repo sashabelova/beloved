@@ -10,8 +10,8 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-96x96.png">
     <link rel="manifest" href="site.webmanifest">
     <style>
         @font-face {
@@ -54,6 +54,25 @@
             align-items: center;
             padding: 0 2rem 3rem;
             line-height: 1.6;
+        }
+
+        .top-navigation {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 10;
+        }
+
+        .nav-link {
+            font-size: 2.5rem;
+            color: #4f4e4e;
+            text-decoration: none;
+            font-weight: normal;
+            font-family: 'Font All Caps', 'Georgia', serif;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
         }
 
         .container {
@@ -113,6 +132,7 @@
             text-decoration: none;
             font-weight: normal;
             font-family: 'Font All Caps', 'Georgia', serif;
+            padding-top: 3px;
         }
 
         .contact-link:hover {
@@ -128,9 +148,6 @@
                 font-size: 2.5rem;
             }
             
-            .logo {
-                width: 250px;
-            }
 
             .bottom-section {
                 gap: 1rem;
@@ -145,6 +162,11 @@
             .contact-link {
                 font-size: 1.2rem;
             }
+
+            .top-navigation {
+                top: 1rem;
+                right: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -153,11 +175,16 @@
             }
             
             .logo {
-                width: 200px;
+                width: 300px;
             }
 
             .contact-link {
                 font-size: 1rem;
+                padding-top: 0;
+            }
+
+            .nav-link {
+                font-size: 1.5rem;
             }
         }
 
@@ -167,6 +194,9 @@
     </style>
 </head>
 <body>
+    <nav class="top-navigation">
+        <a href="past-events.html" class="nav-link">Past Events</a>
+    </nav>
     <div class="container">
         <img class="logo" src="pink_logotype.png" alt="Beloved Films Logo">
 
@@ -186,6 +216,7 @@
                     </svg>
                     <a href="https://www.instagram.com/belovedfilms.uk" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">belovedfilms.uk</a>
                 </div>
+
             </div>
         </div>
     </div>
