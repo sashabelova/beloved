@@ -173,7 +173,7 @@
             .main-heading {
                 font-size: 2rem;
             }
-            
+
             .logo {
                 width: 300px;
             }
@@ -188,12 +188,41 @@
             }
         }
 
+        /* Splash screen styles */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d0c0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
 
-        
-     
+        .splash-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .splash-gif {
+            max-width: 90%;
+            max-height: 90%;
+            width: auto;
+            height: auto;
+        }
+
     </style>
 </head>
 <body>
+    <div class="splash-screen" id="splashScreen">
+        <img src="assets/images/1767016991760.gif" alt="Loading animation" class="splash-gif">
+    </div>
+
     <nav class="top-navigation">
         <a href="/past-events/" class="nav-link">Past Events</a>
     </nav>
@@ -220,5 +249,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            const splashScreen = document.getElementById('splashScreen');
+
+            // Duration of the GIF animation in milliseconds (adjust as needed)
+            // Set this to match your GIF's duration
+            const gifDuration = 6000; // 3 seconds - adjust this value based on your GIF
+
+            setTimeout(function() {
+                splashScreen.classList.add('fade-out');
+
+                // Remove the splash screen from DOM after fade-out completes
+                setTimeout(function() {
+                    splashScreen.style.display = 'none';
+                }, 500); // Match this with the CSS transition duration
+            }, gifDuration);
+        });
+    </script>
 </body>
 </html>
