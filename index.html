@@ -81,14 +81,8 @@
             width: 100%;
         }
 
-        .logo {
-            width: 800px;
-            margin: 0 auto 4rem;
-            display: flex;
-        }
-
         .main-heading {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             color: #0223C6;
             margin-bottom: 0;
             font-weight: normal;
@@ -97,14 +91,10 @@
         }
 
         .bottom-section {
-            position: fixed;
-            bottom: 2rem;
-            left: 0;
-            right: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         .contact-items {
@@ -174,10 +164,6 @@
                 font-size: 2rem;
             }
 
-            .logo {
-                width: 300px;
-            }
-
             .contact-link {
                 font-size: 1rem;
                 padding-top: 0;
@@ -216,20 +202,157 @@
             height: auto;
         }
 
+        /* Poster wall: two tilted rows of stills drifting in opposite directions */
+        body {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .wall {
+            position: fixed;
+            inset: -25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.5rem;
+            transform: rotate(-8deg);
+            z-index: 1;
+        }
+
+        .wall-row {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            padding-right: 1.5rem;
+            animation: drift 120s linear infinite;
+        }
+
+        .wall-row.reverse {
+            animation-direction: reverse;
+            animation-duration: 150s;
+        }
+
+        .wall:hover .wall-row {
+            animation-play-state: paused;
+        }
+
+        @keyframes drift {
+            to { transform: translateX(-50%); }
+        }
+
+        .still {
+            height: 38vh;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border-radius: 3px;
+            box-shadow: 0 6px 24px rgba(13, 12, 12, 0.18);
+            filter: saturate(0.9);
+            cursor: none;
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .still:hover {
+            transform: scale(1.06) rotate(1.5deg);
+            filter: saturate(1.1);
+        }
+
+        /* Centre card carrying the message */
+        .container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(92vw, 720px);
+            padding: 2.5rem 2rem 2.25rem;
+            background-color: #FCF8F1;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(13, 12, 12, 0.35);
+            z-index: 5;
+            animation: rise 1.2s ease-out 0.2s both;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translate(-50%, calc(-50% + 24px)); }
+        }
+
+        .brand-logo {
+            display: block;
+            width: 300px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .top-navigation {
+            background-color: #FCF8F1;
+            padding: 0.2rem 0.9rem 0;
+            border-radius: 3px;
+        }
+
+        /* Film grain over everything */
+        .grain {
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            pointer-events: none;
+            opacity: 0.12;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        }
+
+        @media (max-width: 768px) {
+            .still { height: 28vh; }
+            .wall { gap: 1rem; }
+            .wall-row { gap: 1rem; padding-right: 1rem; }
+            .container { padding: 1.75rem 1.25rem; }
+            .top-navigation { padding: 0.1rem 0.6rem 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wall-row { animation: none; }
+            .container { animation: none; }
+        }
+
     </style>
 </head>
 <body>
     <div class="splash-screen" id="splashScreen">
-        <img src="assets/images/1767016991760.gif" alt="Loading animation" class="splash-gif">
+        <img data-src="assets/images/1767016991760.gif" alt="Loading animation" class="splash-gif">
+    </div>
+    <script>
+        // Show the intro at most once every 7 days; add ?intro to the URL to force it
+        (function() {
+            const KEY = 'belovedIntroShown';
+            const WEEK = 7 * 24 * 60 * 60 * 1000;
+            const splash = document.getElementById('splashScreen');
+            let show = true;
+            try {
+                const last = Number(localStorage.getItem(KEY));
+                if (last && Date.now() - last < WEEK && !location.search.includes('intro')) {
+                    show = false;
+                }
+                if (show) localStorage.setItem(KEY, Date.now());
+            } catch (e) {}
+
+            if (show) {
+                const gif = splash.querySelector('img');
+                gif.src = gif.dataset.src;
+            } else {
+                splash.remove();
+            }
+        })();
+    </script>
+
+    <div class="wall" id="wall" aria-hidden="true">
+        <div class="wall-row" data-stills="08 12 16 11 14 18 13 15 17"></div>
+        <div class="wall-row reverse" data-stills="27 25 23 21 19 26 24 22 20"></div>
     </div>
 
     <nav class="top-navigation">
         <a href="/past-events/" class="nav-link">Past Events</a>
     </nav>
     <div class="container">
-        <img class="logo" src="assets/images/pink_logotype.png" alt="Beloved Films Logo">
-
         <div class="bottom-section">
+            <img src="assets/images/pink_logotype.png" alt="Beloved Films" class="brand-logo">
             <h1 class="main-heading">We find stories worth watching.</h1>
             <div class="contact-items">
                 <div class="contact-item">
@@ -250,22 +373,38 @@
         </div>
     </div>
 
+    <div class="grain" aria-hidden="true"></div>
+
     <script>
         window.addEventListener('load', function() {
             const splashScreen = document.getElementById('splashScreen');
 
-            // Duration of the GIF animation in milliseconds (adjust as needed)
-            // Set this to match your GIF's duration
-            const gifDuration = 6000; // 3 seconds - adjust this value based on your GIF
+            // Duration of the GIF animation in milliseconds
+            const gifDuration = 6000;
+
+            if (!splashScreen) return;
 
             setTimeout(function() {
                 splashScreen.classList.add('fade-out');
-
-                // Remove the splash screen from DOM after fade-out completes
                 setTimeout(function() {
                     splashScreen.style.display = 'none';
-                }, 500); // Match this with the CSS transition duration
+                }, 500);
             }, gifDuration);
+        });
+
+        // Build the poster wall; each row's set is doubled so the drift loops seamlessly
+        document.querySelectorAll('.wall-row').forEach(function(row) {
+            const ids = row.dataset.stills.split(' ');
+            for (let pass = 0; pass < 2; pass++) {
+                ids.forEach(function(id) {
+                    const img = document.createElement('img');
+                    img.src = 'assets/images/web/still-' + id + '.jpg';
+                    img.alt = '';
+                    img.className = 'still';
+                    img.decoding = 'async';
+                    row.appendChild(img);
+                });
+            }
         });
     </script>
 </body>
