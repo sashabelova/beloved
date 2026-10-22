@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beloved Film Club - Beloved Films Distribution">
+    <meta name="keywords" content="film distribution, independent films, beloved films, events">
+    <meta name="author" content="Beloved Films">
+    <title>Beloved Film Club - Beloved Films Distribution</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-96x96.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <style>
+        @font-face {
+            font-family: 'Font All Caps';
+            src: url('../assets/fonts/all_caps-webfont.woff2') format('woff2'),
+                url('../assets/fonts/all_caps-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Font Script';
+            src: url('../assets/fonts/script-webfont.woff2') format('woff2'),
+                url('../assets/fonts/script-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Font Script Alt';
+            src: url('../assets/fonts/script_alt-webfont.woff2') format('woff2'),
+                url('../assets/fonts/script_alt-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Font Script', 'Georgia', serif;
+            background-color: #FCF8F1;
+            color: #4f4e4e;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .top-navigation {
+            position: fixed;
+            top: 1.5rem;
+            left: 2rem;
+            right: 2rem;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .top-navigation a {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            background-color: #FCF8F1;
+            padding: 0.4rem 0.9rem;
+            border-radius: 3px;
+        }
+
+        .back-link {
+            font-size: 1.5rem;
+            color: #4f4e4e;
+            text-decoration: none;
+            font-family: 'Font All Caps', 'Georgia', serif;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 7rem 2rem 3rem;
+        }
+
+        .logo {
+            display: block;
+            width: 130px;
+        }
+
+        .main-heading {
+            font-size: 5rem;
+            color: #0223C6;
+            font-weight: normal;
+            line-height: 1.1;
+            font-family: 'Font Script Alt', sans-serif;
+        }
+
+        .hero-intro {
+            max-width: 855px;
+            margin: 1.5rem auto 0;
+            font-size: 2.2rem;
+            line-height: 1.4;
+        }
+
+        .hero-sub {
+            font-family: 'Font All Caps', 'Georgia', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.08em;
+            margin-top: 0.5rem;
+        }
+
+        /* Ribbon of stills */
+        .ribbon {
+            overflow: hidden;
+            padding: 2rem 0 3rem;
+            transform: rotate(-2deg);
+            margin: 0 -2rem;
+        }
+
+        .ribbon-track {
+            display: flex;
+            gap: 1rem;
+            width: max-content;
+            padding-right: 1rem;
+            animation: drift 90s linear infinite;
+        }
+
+        .ribbon-track img {
+            height: 160px;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border-radius: 3px;
+            box-shadow: 0 4px 14px rgba(13, 12, 12, 0.18);
+            cursor: default;
+        }
+
+        @keyframes drift {
+            to { transform: translateX(-50%); }
+        }
+
+
+        /* Screenings */
+        .screenings {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 2rem 5rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 3rem 2.5rem;
+        }
+
+        .screening {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.75rem;
+        }
+
+
+
+        .screening-poster {
+            position: relative;
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 3px;
+            box-shadow: 0 20px 50px rgba(13, 12, 12, 0.25);
+            transition: transform 0.6s ease;
+            margin-bottom: 0.75rem;
+        }
+
+        .screening:nth-child(3n + 1) .screening-poster { transform: rotate(-2.5deg); }
+        .screening:nth-child(3n + 2) .screening-poster { transform: rotate(2deg); }
+        .screening:nth-child(3n) .screening-poster { transform: rotate(-1.5deg); }
+
+        .screening-poster:hover {
+            transform: rotate(0) scale(1.03) !important;
+        }
+
+        .screening-poster img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .screening-title {
+            font-family: 'Font Script Alt', sans-serif;
+            font-weight: normal;
+            font-size: 2.2rem;
+            line-height: 1.1;
+            color: #0223C6;
+        }
+
+        .screening-venue {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 1rem 0.1rem 0.7rem;
+            border-radius: 999px;
+            background-color: #f6a8ea;
+            font-family: 'Font All Caps', 'Georgia', serif;
+            font-size: 1.2rem;
+            color: #0d0c0c;
+        }
+
+        .screening-venue svg {
+            width: 18px;
+            height: 18px;
+            fill: #0d0c0c;
+            margin-top: -3px;
+            flex-shrink: 0;
+        }
+
+        .poster-cta {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(13, 12, 12, 0.6);
+            color: #FCF8F1;
+            font-family: 'Font All Caps', 'Georgia', serif;
+            font-size: 2rem;
+            letter-spacing: 0.06em;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .screening-poster:hover .poster-cta,
+        .screening-poster:focus-visible .poster-cta {
+            opacity: 1;
+        }
+
+        /* Touch screens have no hover, so keep the label visible as a bar */
+        @media (hover: none) {
+            .poster-cta {
+                inset: auto 0 0 0;
+                padding: 0.6rem 0 0.4rem;
+                font-size: 1.4rem;
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .screenings {
+                grid-template-columns: minmax(0, 1fr);
+                max-width: 420px;
+                padding: 1rem 1.5rem 4rem;
+                gap: 4rem;
+            }
+
+            .hero-intro {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* Reels */
+        .reels {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem 5rem;
+            text-align: center;
+        }
+
+        .reels-title {
+            font-family: 'Font Script Alt', sans-serif;
+            font-weight: normal;
+            font-size: 2.5rem;
+            line-height: 1.15;
+            max-width: 760px;
+            margin: 0 auto 2.5rem;
+            color: #0223C6;
+        }
+
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .reel .instagram-media {
+            min-width: 0 !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 !important;
+        }
+
+        .reel blockquote {
+            border: 0;
+            padding: 3rem 1rem;
+            background-color: rgba(2, 35, 198, 0.05);
+            border-radius: 4px;
+        }
+
+        .reel blockquote a {
+            font-family: 'Font All Caps', 'Georgia', serif;
+            font-size: 1.3rem;
+            color: #0223C6;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .reels {
+                padding: 1rem 1.5rem 4rem;
+            }
+
+            .reels-title {
+                font-size: 2rem;
+            }
+
+            .reels-grid {
+                grid-template-columns: minmax(0, 1fr);
+                max-width: 420px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: 'Font All Caps', 'Georgia', serif;
+            font-size: 1.3rem;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+        }
+
+        .footer a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4f4e4e;
+            text-decoration: none;
+        }
+
+        .footer svg {
+            width: 20px;
+            height: 20px;
+            fill: #0223C6;
+            flex-shrink: 0;
+            margin-top: -3px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            translate: 0 40px;
+            transition: opacity 0.9s ease, translate 0.9s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            translate: 0 0;
+        }
+
+        /* Film grain */
+        .grain {
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            pointer-events: none;
+            opacity: 0.04;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+        }
+
+        @media (max-width: 768px) {
+            .top-navigation {
+                top: 1rem;
+                left: 1rem;
+                right: 1rem;
+            }
+
+            .top-navigation a {
+                padding: 0.3rem 0.6rem;
+            }
+
+            .back-link {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 2rem;
+            }
+
+            .logo {
+                width: 100px;
+            }
+
+            .main-heading {
+                font-size: 3.5rem;
+            }
+
+            .ribbon-track img {
+                height: 120px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ribbon-track {
+                animation: none;
+            }
+
+            .reveal {
+                opacity: 1;
+                translate: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="top-navigation">
+        <a href="/" class="back-link">← Back home</a>
+        <a href="/"><img class="logo" src="../assets/images/black-logotype.png" alt="Beloved Films Logo"></a>
+    </nav>
+
+    <header class="hero">
+        <h1 class="main-heading">Beloved Film Club</h1>
+        <p class="hero-intro">Love movies? So do we. A monthly film night at Moylett's in Clapton, celebrating great cinema in a relaxed pub setting.</p>
+    </header>
+
+    <div class="ribbon" aria-hidden="true">
+        <div class="ribbon-track" id="ribbonTrack"></div>
+    </div>
+
+    <main class="screenings" id="screenings">
+        <article class="screening" data-date="2026-07-22">
+            <a class="screening-poster" href="https://www.tickettailor.com/events/moyletts/2307370" target="_blank" rel="noopener noreferrer" aria-label="Tickets and details: I Like Movies">
+                <img src="../assets/images/film-club/i-like-movies.jpg" alt="Beloved Film Club presents I Like Movies - 22 July" loading="lazy">
+                <span class="poster-cta">Get tickets</span>
+            </a>
+            <h2 class="screening-title">"I Like Movies"</h2>
+            <span class="screening-venue"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg> Moyletts, Clapton</span>
+        </article>
+
+        <article class="screening" data-date="2026-08-12">
+            <a class="screening-poster" href="https://www.tickettailor.com/events/belovedfilms/2335252" target="_blank" rel="noopener noreferrer" aria-label="Tickets and details: Frances Ha">
+                <img src="../assets/images/film-club/frances-ha.jpg" alt="Beloved Film Club presents Frances Ha - 12 August" loading="lazy">
+                <span class="poster-cta">Get tickets</span>
+            </a>
+            <h2 class="screening-title">"Frances Ha"</h2>
+            <span class="screening-venue"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg> Moyletts, Clapton</span>
+        </article>
+
+        <article class="screening" data-date="2026-09-30">
+            <a class="screening-poster" href="https://www.tickettailor.com/events/belovedfilms/2417610" target="_blank" rel="noopener noreferrer" aria-label="Tickets and details: Big Fish">
+                <img src="../assets/images/film-club/big-fish.jpg" alt="Beloved Film Club presents Big Fish - 30 September" loading="lazy">
+                <span class="poster-cta">Get tickets</span>
+            </a>
+            <h2 class="screening-title">"Big Fish"</h2>
+            <span class="screening-venue"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg> Moyletts, Clapton</span>
+        </article>
+    </main>
+
+    <section class="reels">
+        <h2 class="reels-title">Inside Beloved Film Club</h2>
+        <div class="reels-grid" id="reels">
+            <div class="reel">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbLvSd8s5Yq/" data-instgrm-version="14">
+                    <a href="https://www.instagram.com/reel/DbLvSd8s5Yq/" target="_blank" rel="noopener noreferrer">Watch this reel on Instagram</a>
+                </blockquote>
+            </div>
+
+            <div class="reel">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DeIAx3rM87W/" data-instgrm-version="14">
+                    <a href="https://www.instagram.com/reel/DeIAx3rM87W/" target="_blank" rel="noopener noreferrer">Watch this reel on Instagram</a>
+                </blockquote>
+            </div>
+
+            <div class="reel">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Db-Qj2MMXFy/" data-instgrm-version="14">
+                    <a href="https://www.instagram.com/reel/Db-Qj2MMXFy/" target="_blank" rel="noopener noreferrer">Watch this reel on Instagram</a>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <a href="mailto:hello@belovedfilms.co.uk"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>hello@belovedfilms.co.uk</a>
+        <a href="https://www.instagram.com/belovedfilms.uk" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>belovedfilms.uk</a>
+    </footer>
+
+    <div class="grain" aria-hidden="true"></div>
+
+    <script>
+        // Ribbon of stills; the set is doubled so the drift loops seamlessly
+        const track = document.getElementById('ribbonTrack');
+        const ids = ['08', '16', '21', '12', '24', '18', '13', '26', '15', '19'];
+        for (let pass = 0; pass < 2; pass++) {
+            ids.forEach(function (id) {
+                const img = document.createElement('img');
+                img.src = '../assets/images/web/still-' + id + '.jpg';
+                img.alt = '';
+                img.decoding = 'async';
+                track.appendChild(img);
+            });
+        }
+
+        // Upcoming screenings first (soonest on top), then past ones (most recent first)
+        const list = document.getElementById('screenings');
+        const today = new Date().toISOString().slice(0, 10);
+        const cards = Array.from(list.children);
+        cards.forEach(function (card) {
+            if (card.dataset.date < today) {
+                card.classList.add('past');
+                card.querySelector('.poster-cta').textContent = 'View event';
+            }
+        });
+        const upcoming = cards.filter(function (c) { return !c.classList.contains('past'); })
+            .sort(function (a, b) { return a.dataset.date.localeCompare(b.dataset.date); });
+        const past = cards.filter(function (c) { return c.classList.contains('past'); })
+            .sort(function (a, b) { return b.dataset.date.localeCompare(a.dataset.date); });
+        upcoming.concat(past).forEach(function (c) { list.appendChild(c); });
+
+        // Load Instagram's embed script only when the reels come into view
+        const reels = document.getElementById('reels');
+        const reelsObserver = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) {
+                reelsObserver.disconnect();
+                const script = document.createElement('script');
+                script.src = 'https://www.instagram.com/embed.js';
+                script.async = true;
+                document.body.appendChild(script);
+            }
+        }, { rootMargin: '400px' });
+        reelsObserver.observe(reels);
+    </script>
+</body>
+
+</html>

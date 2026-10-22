@@ -283,6 +283,8 @@
         }
 
         .top-navigation {
+            display: flex;
+            gap: 3.5rem;
             background-color: #FCF8F1;
             padding: 0.2rem 0.9rem 0;
             border-radius: 3px;
@@ -304,7 +306,7 @@
             .wall { gap: 1rem; }
             .wall-row { gap: 1rem; padding-right: 1rem; }
             .container { padding: 1.75rem 1.25rem; }
-            .top-navigation { padding: 0.1rem 0.6rem 0; }
+            .top-navigation { padding: 0.1rem 0.6rem 0; gap: 2rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -348,6 +350,7 @@
     </div>
 
     <nav class="top-navigation">
+        <a href="/film-club/" class="nav-link">Film Club</a>
         <a href="/past-events/" class="nav-link">Past Events</a>
     </nav>
     <div class="container">
