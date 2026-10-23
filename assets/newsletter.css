@@ -1,0 +1,227 @@
+/* Newsletter (Brevo form) */
+.footer { flex-direction: column; align-items: center; }
+
+.newsletter {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 0.5rem;
+    text-align: left;
+    font-family: 'Font Script', 'Georgia', serif;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    color: #4f4e4e;
+    text-align: center;
+}
+
+.newsletter-title {
+    font-family: 'Font All Caps', 'Georgia', serif;
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    color: #0223C6;
+    margin-bottom: 0.15rem;
+}
+
+.newsletter-intro { margin: 0 0 0.5rem; }
+
+.newsletter #sib-container {
+    max-width: none;
+    padding: 0;
+    background: none;
+    border: 0;
+    display: block;
+}
+
+.newsletter .sib-form { background: none; text-align: left; }
+
+.newsletter #sib-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0 0.6rem;
+    align-items: start;
+}
+
+.newsletter .newsletter-field,
+.newsletter .newsletter-submit { padding: 0; }
+
+.newsletter .newsletter-optin {
+    grid-column: 1 / -1;
+    padding: 0.6rem 0 0;
+}
+
+.newsletter #sib-form .input {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0.5rem 0.75rem 0.4rem;
+    background: transparent;
+    border: 1px solid rgba(79, 78, 78, 0.3);
+    border-radius: 3px;
+    font-family: 'Font Script', 'Georgia', serif;
+    font-size: 1.05rem;
+    color: #4f4e4e;
+    line-height: 1.4;
+}
+
+.newsletter #sib-form .input::placeholder {
+    font-family: 'Font Script', 'Georgia', serif;
+    color: #4f4e4e;
+    opacity: 0.55;
+}
+
+.newsletter #sib-form .input:focus {
+    outline: none;
+    border-color: #4f4e4e;
+}
+
+.newsletter .sib-form-block__button {
+    width: 100%;
+    min-height: 0;
+    padding: 0.5rem 1rem 0.4rem;
+    background: #f6a8ea;
+    border: 1px solid #f6a8ea;
+    border-radius: 3px;
+    font-family: 'Font All Caps', 'Georgia', serif;
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: #4f4e4e;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.newsletter .sib-form-block__button:hover { opacity: 0.8; }
+.newsletter .sib-form-block__button .progress-indicator__icon {
+    width: 1em; height: 1em; margin: 0 0.4em 0 0; fill: currentColor; vertical-align: -0.1em;
+}
+
+.newsletter .entry__choice label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.35;
+    cursor: pointer;
+}
+
+.newsletter .entry__choice label p { margin: 0; }
+
+.newsletter #sib-form .checkbox {
+    flex-shrink: 0;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin: 0.1rem 0 0;
+    background: transparent;
+    border: 1px solid rgba(79, 78, 78, 0.5);
+    vertical-align: baseline;
+}
+
+.newsletter #sib-form .input_replaced:checked + .checkbox_tick_positive {
+    background: #4f4e4e;
+    border-color: #4f4e4e;
+}
+
+.newsletter #sib-form .input_replaced:focus + .checkbox { box-shadow: 0 0 0 2px #FCF8F1, 0 0 0 3px #4f4e4e; }
+
+.newsletter .entry__error {
+    font-family: 'Font Script', 'Georgia', serif;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    color: #b3261e;
+    margin: 0.3rem 0 0;
+}
+
+.newsletter .entry__error:empty { margin: 0; }
+
+.newsletter a { color: inherit; text-decoration: underline; display: inline; gap: 0; }
+.newsletter a:hover { text-decoration: none; }
+
+.newsletter .sib-form-message-panel {
+    max-width: none;
+    margin: 0 0 0.6rem;
+    padding: 0;
+    border-radius: 3px;
+    font-family: 'Font Script', 'Georgia', serif;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.newsletter .sib-form-message-panel__text { padding: 0.4rem 0.6rem; }
+.newsletter #error-message { color: #661d1d; background: #ffeded; border-color: #e3b5b2; }
+.newsletter #success-message { color: #4f4e4e; background: rgba(246, 168, 234, 0.35); border-color: #f6a8ea; }
+.newsletter .sib-form-message-panel .sib-icon { width: 16px; height: 16px; margin: 0 0.5rem 0 0; }
+
+/* Reset Brevo's default spacing so the row lines up */
+.newsletter #sib-form .sib-form-block,
+.newsletter #sib-form .form__entry,
+.newsletter #sib-form .form__label-row,
+.newsletter #sib-form .entry__field,
+.newsletter #sib-form .entry__choice {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    width: auto;
+}
+
+.newsletter #sib-form .newsletter-optin { padding-top: 0.6rem; }
+
+.newsletter #sib-form .input,
+.newsletter #sib-form .sib-form-block__button {
+    height: 2.4rem;
+    box-sizing: border-box;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: block;
+    line-height: 2.4rem;
+}
+
+.newsletter #sib-form .sib-form-block__button { padding-left: 1rem; padding-right: 1rem; }
+
+.newsletter #sib-form .entry__choice label,
+.newsletter #sib-form .entry__choice label * {
+    font-family: 'Font Script', 'Georgia', serif;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: #4f4e4e;
+}
+
+.newsletter #sib-form .entry__choice label {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+}
+
+.newsletter #sib-form .entry__choice label > span:last-child { display: block; }
+.newsletter #sib-form .entry__choice .checkbox { margin: 0; }
+
+.newsletter .sib-form { padding: 0; margin: 0; }
+.newsletter #sib-form .form__entry { margin: 0; }
+
+/* Brevo wraps the input in a bordered box; the input carries the border instead */
+.newsletter #sib-form .entry__field {
+    display: block;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.newsletter #sib-form .entry__choice { text-indent: 0; }
+.newsletter #sib-form .entry__choice label p { display: block; }
+
+.newsletter-social {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    padding-top: 1rem;
+}
+
+@media (max-width: 480px) {
+    .newsletter #sib-form { grid-template-columns: minmax(0, 1fr); }
+    .newsletter .newsletter-submit { margin-top: 0.6rem; }
+}
