@@ -10,7 +10,7 @@
         for (var pass = 0; pass < 2; pass++) {
             ids.forEach(function (id) {
                 var img = document.createElement('img');
-                img.src = base + 'images/web/still-' + id + '.jpg';
+                img.src = base + 'images/web/still-' + id + '.webp';
                 img.alt = '';
                 img.decoding = 'async';
                 track.appendChild(img);
