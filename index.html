@@ -3,71 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Beloved Films - We find stories worth watching">
-    <meta name="keywords" content="film distribution, independent films, beloved films">
-    <meta name="author" content="Beloved Films">
     <title>Beloved Films</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-96x96.png">
+    <meta name="description" content="Beloved Films - we find stories worth watching. Independent film screenings and Beloved Film Club, a monthly film night at Moylett's in Clapton.">
+    <meta name="author" content="Beloved Films">
+    <link rel="canonical" href="https://www.belovedfilms.co.uk/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Beloved Films">
+    <meta property="og:title" content="Beloved Films">
+    <meta property="og:description" content="We find stories worth watching. Independent film screenings and a monthly film club in Clapton.">
+    <meta property="og:url" content="https://www.belovedfilms.co.uk/">
+    <meta property="og:image" content="https://www.belovedfilms.co.uk/assets/images/share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Beloved Films logo">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
+    <link rel="preload" href="assets/fonts/script_alt-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/all_caps-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/site.css">
     <style>
-        @font-face {
-            font-family: 'Font All Caps';
-            src: url('assets/fonts/all_caps-webfont.woff2') format('woff2'),
-                 url('assets/fonts/all_caps-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Font Script';
-            src: url('assets/fonts/script-webfont.woff2') format('woff2'),
-                 url('assets/fonts/script-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Font Script Alt';
-            src: url('assets/fonts/script_alt-webfont.woff2') format('woff2'),
-                 url('assets/fonts/script_alt-webfont.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Font Script', 'Georgia', serif;
-            background-color: #FCF8F1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 0 2rem 3rem;
-            line-height: 1.6;
+            overflow: hidden;
+            height: 100vh;
         }
 
-        .top-navigation {
+        .home-nav {
             position: fixed;
             top: 2rem;
             right: 2rem;
             z-index: 10;
+            display: flex;
+            gap: 3.5rem;
+            background-color: #FCF8F1;
+            padding: 0.2rem 0.9rem 0;
+            border-radius: 3px;
         }
 
         .nav-link {
             font-size: 2.5rem;
             color: #4f4e4e;
             text-decoration: none;
-            font-weight: normal;
             font-family: 'Font All Caps', 'Georgia', serif;
         }
 
@@ -75,19 +53,24 @@
             text-decoration: underline;
         }
 
+        /* Centre card carrying the message */
         .container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(92vw, 720px);
+            padding: 2.5rem 2rem 2.25rem;
             text-align: center;
-            max-width: 800px;
-            width: 100%;
+            background-color: #FCF8F1;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(13, 12, 12, 0.35);
+            z-index: 5;
+            animation: rise 1.2s ease-out 0.2s both;
         }
 
-        .main-heading {
-            font-size: 2.5rem;
-            color: #0223C6;
-            margin-bottom: 0;
-            font-weight: normal;
-            line-height: 1.2;
-            font-family: 'Font Script Alt', sans-serif;
+        @keyframes rise {
+            from { opacity: 0; transform: translate(-50%, calc(-50% + 24px)); }
         }
 
         .bottom-section {
@@ -95,6 +78,21 @@
             flex-direction: column;
             align-items: center;
             gap: 1.25rem;
+        }
+
+        .brand-logo {
+            display: block;
+            width: 300px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .tagline {
+            font-size: 2.5rem;
+            color: #0223C6;
+            font-weight: normal;
+            line-height: 1.2;
+            font-family: 'Font Script Alt', sans-serif;
         }
 
         .contact-items {
@@ -120,7 +118,6 @@
             font-size: 1.5rem;
             color: #4f4e4e;
             text-decoration: none;
-            font-weight: normal;
             font-family: 'Font All Caps', 'Georgia', serif;
             padding-top: 3px;
         }
@@ -129,58 +126,10 @@
             text-decoration: underline;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        @media (max-width: 768px) {
-            .main-heading {
-                font-size: 2.5rem;
-            }
-            
-
-            .bottom-section {
-                gap: 1rem;
-            }
-
-            .contact-items {
-                gap: 1rem;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .contact-link {
-                font-size: 1.2rem;
-            }
-
-            .top-navigation {
-                top: 1rem;
-                right: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .main-heading {
-                font-size: 2rem;
-            }
-
-            .contact-link {
-                font-size: 1rem;
-                padding-top: 0;
-            }
-
-            .nav-link {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Splash screen styles */
+        /* Splash screen */
         .splash-screen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background-color: #0d0c0c;
             display: flex;
             justify-content: center;
@@ -195,19 +144,12 @@
             pointer-events: none;
         }
 
-        .splash-gif {
+        .splash-video {
             max-width: 90%;
             max-height: 90%;
-            width: auto;
-            height: auto;
         }
 
         /* Poster wall: two tilted rows of stills drifting in opposite directions */
-        body {
-            overflow: hidden;
-            height: 100vh;
-        }
-
         .wall {
             position: fixed;
             inset: -25%;
@@ -236,10 +178,6 @@
             animation-play-state: paused;
         }
 
-        @keyframes drift {
-            to { transform: translateX(-50%); }
-        }
-
         .still {
             height: 38vh;
             aspect-ratio: 3 / 4;
@@ -256,92 +194,87 @@
             filter: saturate(1.1);
         }
 
-        /* Centre card carrying the message */
-        .container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: min(92vw, 720px);
-            padding: 2.5rem 2rem 2.25rem;
-            background-color: #FCF8F1;
-            border-radius: 4px;
-            box-shadow: 0 20px 60px rgba(13, 12, 12, 0.35);
-            z-index: 5;
-            animation: rise 1.2s ease-out 0.2s both;
-        }
-
-        @keyframes rise {
-            from { opacity: 0; transform: translate(-50%, calc(-50% + 24px)); }
-        }
-
-        .brand-logo {
-            display: block;
-            width: 300px;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .top-navigation {
-            display: flex;
-            gap: 3.5rem;
-            background-color: #FCF8F1;
-            padding: 0.2rem 0.9rem 0;
-            border-radius: 3px;
-        }
-
-        /* Film grain over everything */
-        .grain {
-            position: fixed;
-            inset: 0;
-            z-index: 20;
-            pointer-events: none;
-            opacity: 0.12;
-            mix-blend-mode: multiply;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-        }
-
         @media (max-width: 768px) {
+            .home-nav {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.1rem 0.6rem 0;
+                gap: 2rem;
+            }
+
+            .container { padding: 1.5rem 1.25rem; }
+            .bottom-section { gap: 1rem; }
+            .brand-logo { width: 190px; }
+
+            .contact-items {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-link { font-size: 1.2rem; }
+
             .still { height: 36vh; }
             .wall { gap: 26vh; }
-            .brand-logo { width: 190px; }
             .wall-row { gap: 1rem; padding-right: 1rem; }
-            .container { padding: 1.5rem 1.25rem; }
-            .top-navigation { padding: 0.1rem 0.6rem 0; gap: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-link { font-size: 1.5rem; }
+            .tagline { font-size: 2rem; }
+
+            .contact-link {
+                font-size: 1rem;
+                padding-top: 0;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
             .wall-row { animation: none; }
             .container { animation: none; }
         }
-
     </style>
 </head>
 <body>
     <div class="splash-screen" id="splashScreen">
-        <img data-src="assets/images/1767016991760.gif" alt="Loading animation" class="splash-gif">
+        <video class="splash-video" muted playsinline preload="none" aria-hidden="true"></video>
     </div>
     <script>
-        // Show the intro at most once every 7 days; add ?intro to the URL to force it
+        // Show the intro at most once every 7 days, and never to visitors who prefer reduced motion;
+        // add ?intro to the URL to force it
         (function() {
             const KEY = 'belovedIntroShown';
             const WEEK = 7 * 24 * 60 * 60 * 1000;
             const splash = document.getElementById('splashScreen');
-            let show = true;
+            const video = splash.querySelector('video');
+            const forced = location.search.includes('intro');
+            let show = forced || !matchMedia('(prefers-reduced-motion: reduce)').matches;
             try {
                 const last = Number(localStorage.getItem(KEY));
-                if (last && Date.now() - last < WEEK && !location.search.includes('intro')) {
-                    show = false;
-                }
+                if (!forced && last && Date.now() - last < WEEK) show = false;
                 if (show) localStorage.setItem(KEY, Date.now());
             } catch (e) {}
 
-            if (show) {
-                const gif = splash.querySelector('img');
-                gif.src = gif.dataset.src;
-            } else {
+            if (!show) {
                 splash.remove();
+                return;
             }
+
+            function hide() {
+                if (splash.classList.contains('fade-out')) return;
+                splash.classList.add('fade-out');
+                setTimeout(function() { splash.remove(); }, 500);
+            }
+
+            video.addEventListener('ended', hide);
+            video.addEventListener('error', hide);
+            // Never hold visitors longer than this, e.g. on a slow connection
+            setTimeout(hide, 10000);
+
+            video.muted = true;
+            video.src = 'assets/images/intro.mp4';
+            // Autoplay can be refused (e.g. iPhone Low Power Mode); skip the intro then
+            video.play().catch(hide);
         })();
     </script>
 
@@ -350,14 +283,15 @@
         <div class="wall-row reverse" data-stills="21 22 24 23 19 25 27 26 20"></div>
     </div>
 
-    <nav class="top-navigation">
+    <nav class="home-nav">
         <a href="/film-club/" class="nav-link">Film Club</a>
         <a href="/past-events/" class="nav-link">Past Events</a>
     </nav>
-    <div class="container">
+
+    <main class="container">
         <div class="bottom-section">
             <img src="assets/images/pink_logotype.png" alt="Beloved Films" class="brand-logo">
-            <h1 class="main-heading">We find stories worth watching</h1>
+            <h1 class="tagline">We find stories worth watching</h1>
             <div class="contact-items">
                 <div class="contact-item">
                     <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -372,30 +306,13 @@
                     </svg>
                     <a href="https://www.instagram.com/belovedfilms.uk" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">belovedfilms.uk</a>
                 </div>
-
             </div>
         </div>
-    </div>
+    </main>
 
     <div class="grain" aria-hidden="true"></div>
 
     <script>
-        window.addEventListener('load', function() {
-            const splashScreen = document.getElementById('splashScreen');
-
-            // Duration of the GIF animation in milliseconds
-            const gifDuration = 6000;
-
-            if (!splashScreen) return;
-
-            setTimeout(function() {
-                splashScreen.classList.add('fade-out');
-                setTimeout(function() {
-                    splashScreen.style.display = 'none';
-                }, 500);
-            }, gifDuration);
-        });
-
         // Build the poster wall; each row's set is doubled so the drift loops seamlessly
         document.querySelectorAll('.wall-row').forEach(function(row) {
             const ids = row.dataset.stills.split(' ');

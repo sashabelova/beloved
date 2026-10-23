@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Beloved Films</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="preload" href="/assets/fonts/script_alt-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/all_caps-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <style>
+        .hero {
+            padding-top: 9rem;
+        }
+
+        .not-found-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem 2.5rem;
+            padding: 1rem 2rem 5rem;
+        }
+
+        .not-found-links a {
+            font-family: 'Font All Caps', 'Georgia', serif;
+            font-size: 1.5rem;
+            color: #0223C6;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="top-navigation">
+        <div class="nav-links">
+            <a href="/"><img class="logo" src="/assets/images/black-logotype.png" alt="Beloved Films home"></a>
+            <a href="/film-club/">Film Club</a>
+            <a href="/past-events/">Past Events</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1 class="main-heading">This page has left the cinema</h1>
+        <p class="hero-sub">We couldn't find what you were looking for</p>
+    </header>
+
+    <div class="ribbon" aria-hidden="true">
+        <div class="ribbon-track" id="ribbonTrack"></div>
+    </div>
+
+    <main class="not-found-links">
+        <a href="/">Home</a>
+        <a href="/film-club/">Film Club</a>
+        <a href="/past-events/">Past Events</a>
+    </main>
+
+    <div class="grain" aria-hidden="true"></div>
+
+    <script src="/assets/site.js"></script>
+</body>
+
+</html>

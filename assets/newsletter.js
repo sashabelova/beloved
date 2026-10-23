@@ -43,7 +43,7 @@
                                     <div class="form__label-row">
                                         <div class="entry__choice">
                                             <label>
-                                                <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" />
+                                                <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" data-required="true" required />
                                                 <span class="checkbox checkbox_tick_positive"></span><span><p>I agree to receive occasional emails from Beloved Films. Unsubscribe any time. See our <a href="/privacy/" target="_blank">privacy notice</a>.</p></span>
                                             </label>
                                         </div>
@@ -60,7 +60,25 @@
         </section>
 `;
 
-    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';  window.LOCALE = 'en';  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";  window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";  window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";  window.INVALID_NUMBER = "The information provided is invalid. Please review the field format and try again.";  window.INVALID_DATE = "Please enter a valid date";  window.REQUIRED_MULTISELECT_MESSAGE = 'Please select at least 1 option';  window.translation = {    common: {      selectedList: '{quantity} list selected',      selectedLists: '{quantity} lists selected',      selectedOption: '{quantity} selected',      selectedOptions: '{quantity} selected',    }  };  var AUTOHIDE = Boolean(0);
+    // Messages and settings read by Brevo's script
+    var invalid = 'The information provided is invalid. Please review the field format and try again.';
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'en';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = invalid;
+    window.REQUIRED_ERROR_MESSAGE = 'This field cannot be left blank.';
+    window.GENERIC_INVALID_MESSAGE = invalid;
+    window.INVALID_NUMBER = invalid;
+    window.INVALID_DATE = 'Please enter a valid date';
+    window.REQUIRED_MULTISELECT_MESSAGE = 'Please select at least 1 option';
+    window.translation = {
+        common: {
+            selectedList: '{quantity} list selected',
+            selectedLists: '{quantity} lists selected',
+            selectedOption: '{quantity} selected',
+            selectedOptions: '{quantity} selected'
+        }
+    };
+    window.AUTOHIDE = false;
 
     var s = document.createElement('script');
     s.src = "https://sibforms.com/forms/end-form/build/main.js";
