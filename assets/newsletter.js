@@ -63,18 +63,23 @@
     // Brevo's script ignores the consent box, so stop the sign-up here until it's ticked.
     // Listening in the capture phase on the wrapper runs this before Brevo's own handlers.
     var optIn = mount.querySelector('#OPT_IN');
-    var optInError = mount.querySelector('.newsletter-optin .entry__error');
+    var optInBlock = mount.querySelector('.newsletter-optin');
+    var optInError = optInBlock.querySelector('.entry__error');
+    optInError.setAttribute('role', 'alert');
     function requireConsent(e) {
         if (e.type === 'click' && !e.target.closest('.sib-form-block__button')) return;
         if (optIn.checked) return;
         e.preventDefault();
         e.stopImmediatePropagation();
+        optInBlock.classList.add('newsletter-optin--error');
         optInError.textContent = 'Please tick the box to agree to receive our emails.';
     }
     mount.addEventListener('click', requireConsent, true);
     mount.addEventListener('submit', requireConsent, true);
     optIn.addEventListener('change', function () {
-        if (optIn.checked) optInError.textContent = '';
+        if (!optIn.checked) return;
+        optInBlock.classList.remove('newsletter-optin--error');
+        optInError.textContent = '';
     });
 
     // Messages and settings read by Brevo's script

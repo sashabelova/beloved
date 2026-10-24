@@ -169,6 +169,11 @@
 
 .newsletter .entry__error:empty { margin: 0; }
 
+/* Brevo hides error labels by default; show ours whenever it has text */
+.newsletter .entry__error:not(:empty) { display: block; }
+
+.newsletter #sib-form .newsletter-optin--error .checkbox { border-color: #b3261e; }
+
 .newsletter .sib-form-message-panel {
     max-width: none;
     margin: 0 0 0.6rem;

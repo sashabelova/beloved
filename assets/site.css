@@ -196,6 +196,23 @@ body {
     padding-top: 1rem;
 }
 
+/* Copyright line; site.js keeps the year current */
+.copyright {
+    font-family: 'Font Script', 'Georgia', serif;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #4f4e4e;
+    opacity: 0.8;
+}
+
+/* The script font draws © high above the line, so use a plain font for it */
+.copyright-mark {
+    font-family: 'Georgia', serif;
+    font-size: 0.85em;
+    position: relative;
+    top: 0.05em;
+}
+
 /* Scroll reveal */
 .reveal {
     opacity: 0;
