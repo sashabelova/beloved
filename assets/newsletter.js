@@ -60,6 +60,23 @@
         </section>
 `;
 
+    // Brevo's script ignores the consent box, so stop the sign-up here until it's ticked.
+    // Listening in the capture phase on the wrapper runs this before Brevo's own handlers.
+    var optIn = mount.querySelector('#OPT_IN');
+    var optInError = mount.querySelector('.newsletter-optin .entry__error');
+    function requireConsent(e) {
+        if (e.type === 'click' && !e.target.closest('.sib-form-block__button')) return;
+        if (optIn.checked) return;
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        optInError.textContent = 'Please tick the box to agree to receive our emails.';
+    }
+    mount.addEventListener('click', requireConsent, true);
+    mount.addEventListener('submit', requireConsent, true);
+    optIn.addEventListener('change', function () {
+        if (optIn.checked) optInError.textContent = '';
+    });
+
     // Messages and settings read by Brevo's script
     var invalid = 'The information provided is invalid. Please review the field format and try again.';
     window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
@@ -78,7 +95,7 @@
             selectedOptions: '{quantity} selected'
         }
     };
-    window.AUTOHIDE = false;
+    window.AUTOHIDE = true; // hide the form after a successful sign-up, leaving only the success message
 
     var s = document.createElement('script');
     s.src = "https://sibforms.com/forms/end-form/build/main.js";
