@@ -126,6 +126,69 @@
             text-decoration: underline;
         }
 
+        /* Newsletter: a quiet link under the contact row that opens the sign-up form */
+        .newsletter-link {
+            appearance: none;
+            background: none;
+            border: 0;
+            padding: 0.25rem 0 0;
+            font-family: 'Font All Caps', 'Georgia', serif;
+            font-size: 1.6rem;
+            color: #0223C6;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+
+        .newsletter-link:hover {
+            text-decoration: none;
+        }
+
+        .newsletter-dialog {
+            /* Same footprint as the card on the page */
+            width: min(92vw, 720px);
+            min-height: 376px;
+            margin: auto;
+            padding: 2.5rem 2rem 2.25rem;
+            border: 0;
+            border-radius: 4px;
+            background-color: #FCF8F1;
+            box-shadow: 0 20px 60px rgba(13, 12, 12, 0.35);
+            overflow: visible;
+        }
+
+        .newsletter-dialog[open] {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .newsletter-dialog .newsletter {
+            max-width: 460px;
+        }
+
+        .newsletter-dialog::backdrop {
+            background: rgba(13, 12, 12, 0.55);
+        }
+
+        .newsletter-close {
+            position: absolute;
+            top: 0.6rem;
+            right: 0.8rem;
+            appearance: none;
+            background: none;
+            border: 0;
+            padding: 0.25rem 0.5rem;
+            font-size: 2.2rem;
+            line-height: 1;
+            color: #4f4e4e;
+            cursor: pointer;
+        }
+
+        .newsletter-close:hover {
+            color: #0223C6;
+        }
+
         /* Splash screen */
         .splash-screen {
             position: fixed;
@@ -214,6 +277,8 @@
             }
 
             .contact-link { font-size: 1.3rem; }
+            .newsletter-link { font-size: 1.3rem; }
+            .newsletter-dialog { min-height: 0; }
 
             .still { height: 36vh; }
             .wall { gap: 26vh; }
@@ -308,10 +373,57 @@
                     <a href="https://www.instagram.com/belovedfilms.uk" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">belovedfilms.uk</a>
                 </div>
             </div>
+            <button type="button" class="newsletter-link" id="newsletterOpen" aria-haspopup="dialog">Join our newsletter &rarr;</button>
         </div>
     </main>
 
+    <dialog class="newsletter-dialog" id="newsletterDialog" aria-label="Sign up to the newsletter">
+        <button type="button" class="newsletter-close" id="newsletterClose" aria-label="Close">&times;</button>
+        <div id="newsletter"></div>
+    </dialog>
+
     <div class="grain" aria-hidden="true"></div>
+
+    <script>
+        // The sign-up form (and Brevo's scripts) load only when someone asks for it
+        (function() {
+            const dialog = document.getElementById('newsletterDialog');
+            const opener = document.getElementById('newsletterOpen');
+            let loaded = false;
+
+            function load() {
+                if (loaded) return;
+                loaded = true;
+                ['https://sibforms.com/forms/end-form/build/sib-styles.css', 'assets/newsletter.css'].forEach(function(href) {
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = href;
+                    document.head.appendChild(link);
+                });
+                const script = document.createElement('script');
+                script.src = 'assets/newsletter.js';
+                script.onload = focusEmail;
+                document.body.appendChild(script);
+            }
+
+            // Put the cursor in the email field rather than on the close button
+            function focusEmail() {
+                const email = document.getElementById('EMAIL');
+                if (dialog.open && email) email.focus();
+            }
+
+            opener.addEventListener('mouseenter', load, { once: true });
+            opener.addEventListener('focus', load, { once: true });
+            opener.addEventListener('click', function() {
+                load();
+                dialog.showModal();
+                focusEmail();
+            });
+            document.getElementById('newsletterClose').addEventListener('click', function() { dialog.close(); });
+            // Click on the backdrop closes it
+            dialog.addEventListener('click', function(e) { if (e.target === dialog) dialog.close(); });
+        })();
+    </script>
 
     <script>
         // Build the poster wall; each row's set is doubled so the drift loops seamlessly
