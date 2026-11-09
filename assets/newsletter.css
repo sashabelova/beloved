@@ -1,7 +1,8 @@
 /* Newsletter (Brevo form) */
 .newsletter {
-    width: 100%;
-    max-width: 420px;
+    display: grid;
+    width: max-content;
+    max-width: 100%;
     margin: 0 auto 0.5rem;
     text-align: center;
     font-family: 'Font Script', 'Georgia', serif;
@@ -21,6 +22,8 @@
 }
 
 .newsletter-intro { margin: 0 0 0.75rem; }
+
+.newsletter .sib-form { width: 100%; contain: inline-size; }
 
 .newsletter a { color: inherit; text-decoration: underline; display: inline; gap: 0; }
 .newsletter a:hover { text-decoration: none; }
@@ -193,4 +196,11 @@
     .newsletter { font-size: 1.3rem; }
     .newsletter #sib-form { grid-template-columns: minmax(0, 1fr); }
     .newsletter #sib-form .newsletter-submit { margin-top: 0.6rem; }
+}
+
+/* Same breakpoint as the dialog's film-strip layout */
+@media (max-width: 720px) {
+    .newsletter #sib-form .entry__choice label,
+    .newsletter #sib-form .entry__choice label *,
+    .newsletter #sib-form .entry__choice label p { font-size: 0.9rem; line-height: 1.25; }
 }

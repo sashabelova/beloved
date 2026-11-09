@@ -62,6 +62,20 @@
 
     // Brevo's script ignores the consent box, so stop the sign-up here until it's ticked.
     // Listening in the capture phase on the wrapper runs this before Brevo's own handlers.
+    // Size the whole block to the intro line so input, button and consent text match it
+    var root = mount.querySelector('.newsletter');
+    var intro = mount.querySelector('.newsletter-intro');
+    function fit() {
+        root.style.width = '';
+        var w = intro.getBoundingClientRect().width;
+        if (w > 0) root.style.width = Math.ceil(w) + 'px';
+    }
+    intro.style.width = 'max-content';
+    intro.style.margin = '0 auto 0.75rem';
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(intro);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    fit();
+
     var optIn = mount.querySelector('#OPT_IN');
     var optInBlock = mount.querySelector('.newsletter-optin');
     var optInError = optInBlock.querySelector('.entry__error');
