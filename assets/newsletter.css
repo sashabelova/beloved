@@ -198,9 +198,12 @@
     .newsletter #sib-form .newsletter-submit { margin-top: 0.6rem; }
 }
 
-/* Same breakpoint as the dialog's film-strip layout */
-@media (max-width: 720px) {
+@media (max-width: 768px) {
     .newsletter #sib-form .entry__choice label,
     .newsletter #sib-form .entry__choice label *,
-    .newsletter #sib-form .entry__choice label p { font-size: 0.9rem; line-height: 1.25; }
+    .newsletter #sib-form .entry__choice label p { font-size: 1rem; line-height: 1.25; }
+}
+
+@media (max-width: 480px) {
+    .newsletter-intro { font-size: 1.2rem; }
 }

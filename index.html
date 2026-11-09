@@ -190,6 +190,24 @@
             .newsletter-dialog { padding-left: 6.5rem; padding-right: 1.25rem; }
         }
 
+        @media (max-width: 480px) {
+            .newsletter-dialog::before {
+                left: 0;
+                right: 0;
+                top: 0.75rem;
+                bottom: auto;
+                width: auto;
+                height: auto;
+                aspect-ratio: 26268 / 4956;
+                background-image: url('/assets/images/filmstrip-h.webp');
+            }
+            .newsletter-dialog {
+                /* dialog is 92vw wide, so the strip is about 17.4vw tall */
+                padding: calc(17.4vw + 3.5rem) 1.25rem 1.5rem;
+            }
+            .newsletter-close { top: calc(17.4vw + 1.15rem); right: 0.5rem; }
+        }
+
         .newsletter-dialog::backdrop {
             background: rgba(13, 12, 12, 0.55);
         }
@@ -301,7 +319,7 @@
 
             .contact-link { font-size: 1.3rem; }
             .newsletter-link { font-size: 1.3rem; }
-            .newsletter-dialog { min-height: 0; }
+            .newsletter-dialog { min-height: 0; max-width: none; }
 
             .still { height: 36vh; }
             .wall { gap: 26vh; }
