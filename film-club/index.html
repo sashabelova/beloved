@@ -59,13 +59,30 @@
         }
 
         /* Screenings */
+        .screenings-heading {
+            font-family: 'Font Script Alt', sans-serif;
+            font-weight: normal;
+            font-size: 2.5rem;
+            line-height: 1.15;
+            text-align: center;
+            margin: 1.5rem auto 0;
+            padding: 0 2rem;
+            color: #0223C6;
+        }
+
         .screenings {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem 2rem 5rem;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            padding: 2rem 2rem 4rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 3rem 2.5rem;
+        }
+
+        .screenings > .screening {
+            flex: 0 0 calc((100% - 5rem) / 3);
+            min-width: 0;
         }
 
         .screening {
@@ -164,12 +181,74 @@
             }
         }
 
+        /* A lone upcoming screening: poster beside the details instead of filling the page */
+        .screening-buy {
+            display: none;
+        }
+
+        @media (min-width: 901px) {
+            .screenings.is-featured {
+                max-width: 780px;
+                padding-top: 1.5rem;
+                padding-bottom: 3rem;
+            }
+
+            .is-featured > .screening {
+                flex-basis: 100%;
+                display: grid;
+                grid-template-columns: 300px 1fr;
+                grid-template-rows: 1fr repeat(4, auto) 1fr;
+                column-gap: 3.5rem;
+                row-gap: 0.9rem;
+                text-align: left;
+                justify-items: start;
+                align-items: start;
+            }
+
+            .is-featured .screening-poster {
+                grid-column: 1;
+                grid-row: 1 / -1;
+                margin-bottom: 0;
+            }
+
+            .is-featured .screening-title,
+            .is-featured .screening-date,
+            .is-featured .venue,
+            .is-featured .screening-buy {
+                grid-column: 2;
+            }
+
+            .is-featured .screening-title { grid-row: 2; font-size: 3rem; }
+            .is-featured .screening-date { grid-row: 3; font-size: 1.5rem; }
+            .is-featured .venue { grid-row: 4; }
+
+            .is-featured .screening-buy {
+                grid-row: 5;
+                display: inline-block;
+                margin-top: 0.6rem;
+                padding: 0.9rem 1.8rem 0.7rem;
+                border-radius: 3px;
+                background-color: #0223C6;
+                color: #FCF8F1;
+                font-family: 'Font All Caps', 'Georgia', serif;
+                font-size: 1.6rem;
+                letter-spacing: 0.06em;
+                text-decoration: none;
+                transition: opacity 0.3s ease;
+            }
+
+            .is-featured .screening-buy:hover { opacity: 0.85; }
+        }
+
         @media (max-width: 900px) {
             .screenings {
-                grid-template-columns: minmax(0, 1fr);
                 max-width: 420px;
-                padding: 1rem 1.5rem 4rem;
+                padding: 1rem 1.5rem 3rem;
                 gap: 4rem;
+            }
+
+            .screenings > .screening {
+                flex-basis: 100%;
             }
 
             .hero-intro {
@@ -278,18 +357,23 @@
         <div class="ribbon-track" id="ribbonTrack"></div>
     </div>
 
+    <!-- Re-enable when there is no upcoming screening (the script shows it automatically)
     <p class="screenings-notice" id="screeningsNotice" hidden>
         <strong>Next screening coming soon</strong>
         <a href="#newsletter">Sign up to the newsletter</a> to hear about it first.
     </p>
+    -->
 
-    <main class="screenings" id="screenings">
+    <main>
+    <section id="upcomingSection">
+    <h2 class="screenings-heading">Upcoming screenings</h2>
+    <div class="screenings" id="screenings">
         <article class="screening" data-date="2026-07-22">
             <a class="screening-poster" href="https://www.tickettailor.com/events/moyletts/2307370" target="_blank" rel="noopener noreferrer" aria-label="Tickets and details: I Like Movies">
                 <img src="../assets/images/film-club/i-like-movies.webp" alt="Beloved Film Club presents I Like Movies - 22 July" loading="lazy">
                 <span class="poster-cta">Get tickets</span>
             </a>
-            <h2 class="screening-title">"I Like Movies"</h2>
+            <h3 class="screening-title">"I Like Movies"</h3>
             <p class="screening-date">22 July 2026</p>
             <span class="venue"><svg aria-hidden="true" focusable="false"><use href="#pin"/></svg> Moylett's, Clapton</span>
         </article>
@@ -299,7 +383,7 @@
                 <img src="../assets/images/film-club/frances-ha.webp" alt="Beloved Film Club presents Frances Ha - 12 August" loading="lazy">
                 <span class="poster-cta">Get tickets</span>
             </a>
-            <h2 class="screening-title">"Frances Ha"</h2>
+            <h3 class="screening-title">"Frances Ha"</h3>
             <p class="screening-date">12 August 2026</p>
             <span class="venue"><svg aria-hidden="true" focusable="false"><use href="#pin"/></svg> Moylett's, Clapton</span>
         </article>
@@ -309,10 +393,27 @@
                 <img src="../assets/images/film-club/big-fish.webp" alt="Beloved Film Club presents Big Fish - 30 September" loading="lazy">
                 <span class="poster-cta">Get tickets</span>
             </a>
-            <h2 class="screening-title">"Big Fish"</h2>
+            <h3 class="screening-title">"Big Fish"</h3>
             <p class="screening-date">30 September 2026</p>
             <span class="venue"><svg aria-hidden="true" focusable="false"><use href="#pin"/></svg> Moylett's, Clapton</span>
         </article>
+
+        <article class="screening" data-date="2026-11-24">
+            <a class="screening-poster" href="https://www.tickettailor.com/events/belovedfilms/2518081" target="_blank" rel="noopener noreferrer" aria-label="Tickets and details: Scott Pilgrim vs. the World">
+                <img src="../assets/images/film-club/scott.webp" alt="Beloved Film Club presents Scott Pilgrim vs. the World - 24 November" loading="lazy">
+                <span class="poster-cta">Get tickets</span>
+            </a>
+            <h3 class="screening-title">"Scott Pilgrim vs. the World"</h3>
+            <p class="screening-date">24 November 2026</p>
+            <span class="venue"><svg aria-hidden="true" focusable="false"><use href="#pin"/></svg> Moylett's, Clapton</span>
+        </article>
+    </div>
+    </section>
+
+    <section id="pastSection" hidden>
+    <h2 class="screenings-heading">Past screenings</h2>
+    <div class="screenings" id="pastScreenings"></div>
+    </section>
     </main>
 
     <section class="reels">
@@ -341,7 +442,7 @@
     <footer class="footer">
         <div id="newsletter"></div>
         <div class="footer-social" id="footerSocial"></div>
-        <p class="copyright"><span class="copyright-mark">©</span> <span class="year">2026</span> Beloved Films Ltd. All Rights Reserved.</p>
+        <p class="copyright"><span class="copyright-mark">©</span> 2026 Beloved Films Ltd. All Rights Reserved.</p>
     </footer>
 
     <div class="grain" aria-hidden="true"></div>
@@ -350,7 +451,7 @@
     <script src="../assets/site.js"></script>
 
     <script>
-        // Upcoming screenings first (soonest on top), then past ones (most recent first)
+        // Upcoming screenings (soonest first) and past ones (most recent first) go in separate sections
         const list = document.getElementById('screenings');
         const today = new Date().toLocaleDateString('en-CA'); // local YYYY-MM-DD
         const cards = Array.from(list.children);
@@ -370,8 +471,24 @@
             .sort(function (a, b) { return a.dataset.date.localeCompare(b.dataset.date); });
         const past = cards.filter(function (c) { return c.classList.contains('past'); })
             .sort(function (a, b) { return b.dataset.date.localeCompare(a.dataset.date); });
-        upcoming.concat(past).forEach(function (c) { list.appendChild(c); });
-        document.getElementById('screeningsNotice').hidden = upcoming.length > 0;
+        const pastList = document.getElementById('pastScreenings');
+        upcoming.forEach(function (c) { list.appendChild(c); });
+        past.forEach(function (c) { pastList.appendChild(c); });
+        if (upcoming.length === 1) {
+            const card = upcoming[0];
+            const buy = document.createElement('a');
+            buy.className = 'screening-buy';
+            buy.href = card.querySelector('.screening-poster').href;
+            buy.target = '_blank';
+            buy.rel = 'noopener noreferrer';
+            buy.textContent = 'Get tickets';
+            card.appendChild(buy);
+            list.classList.add('is-featured');
+        }
+        document.getElementById('upcomingSection').hidden = upcoming.length === 0;
+        document.getElementById('pastSection').hidden = past.length === 0;
+        const notice = document.getElementById('screeningsNotice');
+        if (notice) notice.hidden = upcoming.length > 0;
 
         // Load Instagram's embed script only when the reels come into view
         const reels = document.getElementById('reels');
