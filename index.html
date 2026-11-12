@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beloved Films</title>
-    <meta name="description" content="Beloved Films - we find stories worth watching. Independent film screenings and Beloved Film Club, a monthly film night at Moylett's in Clapton.">
+    <title>Beloved Films | Independent Film Distribution &amp; Film Club London</title>
+    <meta name="description" content="Beloved Films brings distinctive independent cinema to London through curated film releases and community screenings. Discover upcoming events and Beloved Film Club.">
     <meta name="author" content="Beloved Films">
     <link rel="canonical" href="https://www.belovedfilms.co.uk/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Beloved Films">
-    <meta property="og:title" content="Beloved Films">
-    <meta property="og:description" content="We find stories worth watching. Independent film screenings and a monthly film club in Clapton.">
+    <meta property="og:title" content="Beloved Films | Independent Film Distribution &amp; Film Club London">
+    <meta property="og:description" content="Beloved Films brings distinctive independent cinema to London through curated film releases and community screenings. Discover upcoming events and Beloved Film Club.">
     <meta property="og:url" content="https://www.belovedfilms.co.uk/">
     <meta property="og:image" content="https://www.belovedfilms.co.uk/assets/images/share.jpg">
     <meta property="og:image:width" content="1200">
@@ -24,6 +24,31 @@
     <link rel="preload" href="assets/fonts/script_alt-webfont.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/all_caps-webfont.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="assets/site.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://www.belovedfilms.co.uk/#organization",
+                "name": "Beloved Films",
+                "legalName": "Beloved Films Ltd",
+                "url": "https://www.belovedfilms.co.uk/",
+                "logo": "https://www.belovedfilms.co.uk/web-app-manifest-512x512.png",
+                "email": "hello@belovedfilms.co.uk",
+                "description": "Independent film distribution company in London, bringing distinctive independent cinema to the big screen. Also runs Beloved Film Club.",
+                "sameAs": ["https://www.instagram.com/belovedfilms.uk"]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.belovedfilms.co.uk/#website",
+                "name": "Beloved Films",
+                "url": "https://www.belovedfilms.co.uk/",
+                "publisher": { "@id": "https://www.belovedfilms.co.uk/#organization" }
+            }
+        ]
+    }
+    </script>
     <style>
         body {
             overflow: hidden;
@@ -60,6 +85,8 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: min(92vw, 720px);
+            max-height: 94vh;
+            overflow-y: auto;
             padding: 2.5rem 2rem 2.25rem;
             text-align: center;
             background-color: #FCF8F1;
@@ -95,6 +122,27 @@
             font-family: 'Font Script Alt', sans-serif;
         }
 
+        .next-screening {
+            font-size: 1.6rem;
+            line-height: 1.3;
+            padding: 0.7rem 1.2rem 0.5rem;
+            border-radius: 3px;
+            background-color: rgba(246, 168, 234, 0.35);
+        }
+        .next-screening .next-label {
+            display: block;
+            font-family: 'Font All Caps', 'Georgia', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.08em;
+            color: #4f4e4e;
+        }
+        .next-screening a {
+            color: #0223C6;
+            font-family: 'Font Script Alt', sans-serif;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+        .next-screening a:hover { text-decoration: underline; }
         .contact-items {
             display: flex;
             justify-content: center;
@@ -329,6 +377,8 @@
         @media (max-width: 480px) {
             .nav-link { font-size: 1.5rem; }
             .tagline { font-size: 2rem; }
+            .next-screening { font-size: 1.4rem; padding: 0.5rem 0.9rem 0.3rem; }
+            .next-screening a { font-size: 1.7rem; }
 
             .contact-link {
                 font-size: 1.3rem;
@@ -397,8 +447,16 @@
 
     <main class="container">
         <div class="bottom-section">
-            <img src="assets/images/pink_logotype.png" alt="Beloved Films" class="brand-logo">
-            <h1 class="tagline">We find stories worth watching</h1>
+            <h1 class="brand-heading"><img src="assets/images/pink_logotype.png" alt="Beloved Films" class="brand-logo"><span class="sr-only"> - independent film distribution and film club in London</span></h1>
+            <p class="tagline">We find stories worth watching</p>
+            <p class="sr-only">Beloved Films is bringing distinctive independent cinema to the big screen through curated releases and special screenings, and runs <a href="/film-club/">Beloved Film Club</a>, a regular film night in Hackney.</p>
+            <!-- events:home-next:start (generated by scripts/build.mjs; edit data/events.json) -->
+<p class="next-screening">
+                <span class="next-label">Next Film Club screening</span>
+                <a href="/film-club/scott-pilgrim-vs-the-world/">Scott Pilgrim vs. the World</a><br>
+                <time datetime="2026-11-24">Tue 24 Nov 2026</time> · Moylett's, Lower Clapton
+            </p>
+            <!-- events:home-next:end -->
             <div class="contact-items">
                 <div class="contact-item">
                     <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">

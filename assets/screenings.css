@@ -1,0 +1,252 @@
+/* Screening cards: used on the homepage, Film Club, Past Events and event pages */
+
+/* Shown by the script when no screening is coming up */
+.screenings-notice {
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.4;
+}
+
+.screenings-notice strong {
+    display: block;
+    font-family: 'Font Script Alt', sans-serif;
+    font-weight: normal;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    color: #0223C6;
+}
+
+.screenings-notice a {
+    color: inherit;
+}
+
+/* Screenings */
+.screenings-heading {
+    font-family: 'Font Script Alt', sans-serif;
+    font-weight: normal;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    text-align: center;
+    margin: 1.5rem auto 0;
+    padding: 0 2rem;
+    color: #0223C6;
+}
+
+.screenings {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem 2.5rem;
+}
+
+.screenings > .screening {
+    flex: 0 0 calc((100% - 5rem) / 3);
+    min-width: 0;
+}
+
+.screening {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+}
+
+.screening-poster {
+    position: relative;
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 20px 50px rgba(13, 12, 12, 0.25);
+    transition: transform 0.6s ease;
+    margin-bottom: 0.75rem;
+}
+
+.screening:nth-child(3n + 1) .screening-poster { transform: rotate(-2.5deg); }
+.screening:nth-child(3n + 2) .screening-poster { transform: rotate(2deg); }
+.screening:nth-child(3n) .screening-poster { transform: rotate(-1.5deg); }
+
+.screening-poster:hover {
+    transform: rotate(0) scale(1.03) !important;
+}
+
+.screening-poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+}
+
+.screening-title {
+    font-family: 'Font Script Alt', sans-serif;
+    font-weight: normal;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    color: #0223C6;
+}
+
+.screening-date {
+    font-family: 'Font All Caps', 'Georgia', serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+}
+
+.poster-cta {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    background-color: rgba(13, 12, 12, 0.6);
+    color: #FCF8F1;
+    font-family: 'Font All Caps', 'Georgia', serif;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.screening-poster:hover .poster-cta,
+.screening-poster:focus-visible .poster-cta {
+    opacity: 1;
+}
+
+/* Stamp on screenings that have already happened */
+.poster-stamp {
+    position: absolute;
+    top: 1rem;
+    left: -0.75rem;
+    padding: 0.35rem 0.9rem 0.15rem;
+    border-radius: 3px;
+    background-color: #0d0c0c;
+    color: #FCF8F1;
+    font-family: 'Font All Caps', 'Georgia', serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    transform: rotate(-6deg);
+    box-shadow: 0 6px 16px rgba(13, 12, 12, 0.3);
+}
+
+/* Touch screens have no hover, so keep the label visible as a bar */
+@media (hover: none) {
+    .poster-cta {
+        inset: auto 0 0 0;
+        padding: 0.6rem 0 0.4rem;
+        border-radius: 0 0 3px 3px;
+        font-size: 1.4rem;
+        opacity: 1;
+    }
+}
+
+/* Booking button on upcoming screenings */
+.screening-buy {
+    display: inline-block;
+    margin-top: 0.4rem;
+    padding: 0.8rem 1.6rem 0.6rem;
+    border-radius: 3px;
+    background-color: #0223C6;
+    color: #FCF8F1;
+    font-family: 'Font All Caps', 'Georgia', serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.screening-buy:hover { opacity: 0.85; }
+
+.screening-title a,
+.screening-date a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.screening-title a:hover { text-decoration: underline; }
+
+.screening-more {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem 3rem;
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.4;
+}
+
+.screening-more a { color: #0223C6; }
+
+/* A lone upcoming screening: poster beside the details instead of filling the page */
+@media (min-width: 901px) {
+    .screenings.is-featured {
+        max-width: 780px;
+        padding-top: 1.5rem;
+        padding-bottom: 3rem;
+    }
+
+    .is-featured > .screening {
+        flex-basis: 100%;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: 1fr repeat(4, auto) 1fr;
+        column-gap: 3.5rem;
+        row-gap: 0.9rem;
+        text-align: left;
+        justify-items: start;
+        align-items: start;
+    }
+
+    .is-featured .screening-poster {
+        grid-column: 1;
+        grid-row: 1 / -1;
+        margin-bottom: 0;
+    }
+
+    .is-featured .screening-title,
+    .is-featured .screening-date,
+    .is-featured .venue,
+    .is-featured .screening-buy {
+        grid-column: 2;
+    }
+
+    .is-featured .screening-title { grid-row: 2; font-size: 3rem; }
+    .is-featured .screening-date { grid-row: 3; font-size: 1.5rem; }
+    .is-featured .venue { grid-row: 4; }
+
+    .is-featured .screening-buy {
+        grid-row: 5;
+        margin-top: 0.6rem;
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .screenings {
+        max-width: 420px;
+        padding: 1rem 1.5rem 3rem;
+        gap: 4rem;
+    }
+
+    .screenings > .screening {
+        flex-basis: 100%;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .screenings-notice {
+        padding: 0 1.5rem;
+        font-size: 1.5rem;
+    }
+
+    .screenings-notice strong {
+        font-size: 2rem;
+    }
+}
+

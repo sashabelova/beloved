@@ -1,0 +1,67 @@
+{
+  "organizer": {
+    "name": "Beloved Film Club",
+    "url": "https://www.belovedfilms.co.uk/film-club/"
+  },
+  "events": [
+    {
+      "slug": "i-like-movies",
+      "title": "I Like Movies",
+      "date": "2026-07-22",
+      "venue": "moyletts",
+      "poster": { "file": "i-like-movies.webp", "alt": "Beloved Film Club presents I Like Movies - 22 July" },
+      "ticketUrl": "https://www.tickettailor.com/events/moyletts/2307370"
+    },
+    {
+      "slug": "frances-ha",
+      "title": "Frances Ha",
+      "date": "2026-08-12",
+      "venue": "moyletts",
+      "poster": { "file": "frances-ha.webp", "alt": "Beloved Film Club presents Frances Ha - 12 August" },
+      "ticketUrl": "https://www.tickettailor.com/events/belovedfilms/2335252"
+    },
+    {
+      "slug": "big-fish",
+      "title": "Big Fish",
+      "date": "2026-09-30",
+      "venue": "moyletts",
+      "poster": { "file": "big-fish.webp", "alt": "Beloved Film Club presents Big Fish - 30 September" },
+      "ticketUrl": "https://www.tickettailor.com/events/belovedfilms/2417610"
+    },
+    {
+      "slug": "scott-pilgrim-vs-the-world",
+      "title": "Scott Pilgrim vs. the World",
+      "year": 2010,
+      "director": "Edgar Wright",
+      "cast": ["Michael Cera", "Mary Elizabeth Winstead", "Kieran Culkin", "Chris Evans", "Anna Kendrick", "Aubrey Plaza", "Brie Larson", "Jason Schwartzman"],
+      "runtime": "1 hour 52 minutes",
+      "date": "2026-11-24",
+      "startTime": "19:00",
+      "endTime": "21:00",
+      "venue": "moyletts",
+      "poster": {
+        "file": "scott.webp",
+        "width": 800,
+        "height": 1000,
+        "alt": "Beloved Film Club presents Scott Pilgrim vs. the World - 24 November"
+      },
+      "ticketUrl": "https://www.tickettailor.com/events/belovedfilms/2518081",
+      "seoTitle": "Scott Pilgrim vs. the World Screening in Hackney | Beloved Film Club",
+      "seoDescription": "Watch Scott Pilgrim vs. the World at Beloved Film Club in Hackney, London, on 24 November 2026. A cosy film night at Moylett's. Book tickets.",
+      "description": [
+        "Edgar Wright's 2010 comedy stars Michael Cera as Scott Pilgrim, a young bassist who has to defeat the seven evil exes of Mary Elizabeth Winstead's Ramona Flowers before he can date her. It's iconic, funny and just simply charming.",
+        "Beloved Film Club is our regular film night in a relaxed pub setting, celebrating great cinema. Come on your own or bring a friend: everyone is welcome. The film starts at 7:00 PM, and we recommend arriving earlier to grab a drink or something to eat before getting comfortable. Popcorn on us 🍿"
+      ],
+      "updated": "2026-11-10"
+    }
+  ],
+  "venues": {
+    "moyletts": {
+      "name": "Moylett's",
+      "label": "Moylett's, Lower Clapton",
+      "locality": "London",
+      "postcode": "E5 8EE",
+      "country": "GB"
+    }
+  }
+}

@@ -196,6 +196,15 @@ body {
     padding-top: 1rem;
 }
 
+/* One-line description of the company, under the newsletter signup */
+.footer-about {
+    max-width: 520px;
+    font-family: 'Font Script', 'Georgia', serif;
+    font-size: 1.5rem;
+    line-height: 1.35;
+    color: #4f4e4e;
+}
+
 /* Copyright line */
 .copyright {
     font-family: 'Font Script', 'Georgia', serif;
@@ -294,4 +303,17 @@ body {
         translate: none;
         transition: none;
     }
+}
+
+/* Text for screen readers and search engines only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
