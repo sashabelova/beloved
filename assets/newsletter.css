@@ -2,6 +2,7 @@
 .newsletter {
     display: grid;
     width: max-content;
+    min-width: min(100%, 40rem);
     max-width: 100%;
     margin: 0 auto 0.5rem;
     text-align: center;
@@ -187,7 +188,7 @@
     text-align: left;
 }
 
-.newsletter .sib-form-message-panel__text { padding: 0.4rem 0.6rem; }
+.newsletter .sib-form-message-panel__text { padding: 0.9rem 1.25rem; line-height: 1.5; }
 .newsletter #error-message { color: #661d1d; background: #ffeded; border-color: #e3b5b2; }
 .newsletter #success-message { color: #4f4e4e; background: rgba(246, 168, 234, 0.35); border-color: #f6a8ea; }
 .newsletter .sib-form-message-panel .sib-icon { width: 16px; height: 16px; margin: 0 0.5rem 0 0; }
